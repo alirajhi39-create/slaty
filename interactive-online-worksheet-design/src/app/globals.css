@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-brand: #2ba9a0;
+  --color-teal-dark: #1d7f78;
+  --color-teal-soft: #e3f4f2;
+  --color-brown: #b8692b;
+  --color-brown-dark: #8a4a1a;
+  --color-gold: #b9a46b;
+  --color-cream: #fdf6ea;
+  --font-sans: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --font-quran: "Amiri", "Traditional Arabic", serif;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  color: #2b2b2b;
+  background-color: #f7f3ec;
+}
+
+/* زخرفة إسلامية خفيفة للخلفية */
+.islamic-bg {
+  background-color: #f7f3ec;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(43, 169, 160, 0.07) 0 12px, transparent 13px),
+    radial-gradient(circle at 75% 75%, rgba(184, 105, 43, 0.07) 0 12px, transparent 13px),
+    linear-gradient(45deg, rgba(185, 164, 107, 0.06) 25%, transparent 25%, transparent 75%, rgba(185, 164, 107, 0.06) 75%),
+    linear-gradient(-45deg, rgba(185, 164, 107, 0.06) 25%, transparent 25%, transparent 75%, rgba(185, 164, 107, 0.06) 75%);
+  background-size: 60px 60px, 60px 60px, 30px 30px, 30px 30px;
+}
+
+.side-border {
+  background-image:
+    repeating-linear-gradient(45deg, #c98a4f 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(-45deg, #c98a4f 0 2px, transparent 2px 12px);
+  background-color: #fbeedd;
+}
+
+.quran {
+  font-family: var(--font-quran);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop 0.35s ease-out; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.animate-shake { animation: shake 0.3s ease-in-out 2; }
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+}
+.confetti {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  z-index: 60;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
